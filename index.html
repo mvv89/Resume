@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitaliy Mikhaylichenko - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .resume-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .lang-switch {
+            text-align: center;
+            padding: 10px;
+            background: #f0f0f0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .lang-switch a {
+            color: #2c3e50;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 1em;
+        }
+        
+        .lang-switch a:hover {
+            text-decoration: underline;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .name {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #ecf0f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .title {
+            font-size: 1.4em;
+            color: #bdc3c7;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.95em;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ecf0f1;
+        }
+        
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.8;
+        }
+        
+        .main-content {
+            display: flex;
+            min-height: calc(297mm - 200px);
+        }
+        
+        .sidebar {
+            width: 35%;
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        .content {
+            flex: 1;
+            padding: 40px;
+            background: white;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: #e74c3c;
+        }
+        
+        .skill-category {
+            margin-bottom: 25px;
+        }
+        
+        .skill-category h4 {
+            color: #34495e;
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+            transition: transform 0.2s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+        }
+        
+        .skill-tag.secondary {
+            background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+            box-shadow: 0 2px 8px rgba(149, 165, 166, 0.3);
+        }
+        
+        .experience-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+        
+        .experience-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .job-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .company {
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        
+        .duration {
+            color: #95a5a6;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .achievements {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .achievements li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .achievements li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .project {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #e74c3c, #c0392b);
+        }
+        
+        .project-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .project-desc {
+            color: #7f8c8d;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        
+        .languages {
+            margin-bottom: 25px;
+        }
+        
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .language-name {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .language-level {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            background: #ecf0f1;
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+        
+        @media print {
+            body { 
+                background: white; 
+                padding: 0; 
+            }
+            .resume-container { 
+                box-shadow: none; 
+                border-radius: 0;
+                max-width: none;
+            }
+            .download-section { 
+                display: none; 
+            }
+            .lang-switch { 
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="lang-switch">
+            <a href="#" onclick="switchLanguage('en')">English</a> | 
+            <a href="#" onclick="switchLanguage('uk')">Українська</a>
+        </div>
+
+        <!-- English Version -->
+        <div id="en" style="display: block;">
+            <div class="header">
+                <div class="header-content">
+                    <h1 class="name">Vitaliy Mikhaylichenko</h1>
+                    <p class="title">.NET Backend Developer / Desktop Developer</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                            mvv890517@gmail.com
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                            </svg>
+                            +380686082260
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                            </svg>
+                            Kharkiv, Ukraine
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            github.com/mvv890517
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="sidebar">
+                    <div class="section">
+                        <h3 class="section-title">Skills</h3>
+                        
+                        <div class="skill-category">
+                            <h4>Core Technologies</h4>
+                            <div class="skills-grid">
+                                <span class="skill-tag">C#</span>
+                                <span class="skill-tag">.NET Core/.NET</span>
+                                <span class="skill-tag">ASP.NET Core</span>
+                                <span class="skill-tag">Web API</span>
+                                <span class="skill-tag">WinForms</span>
+                                <span class="skill-tag">WCF</span>
+                                <span class="skill-tag">MS SQL Server</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">Entity Framework</span>
+                                <span class="skill-tag">LINQ</span>
+                                <span class="skill-tag">.NET MAUI</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Additional Tech</h4>
+                            <div class="skills-grid">
+                                <span class="skill-tag secondary">REST API</span>
+                                <span class="skill-tag secondary">JSON</span>
+                                <span class="skill-tag secondary">Git</span>
+                                <span class="skill-tag secondary">Selenium</span>
+                                <span class="skill-tag secondary">Windows Services</span>
+                                <span class="skill-tag secondary">Telegram.Bot</span>
+                                <span class="skill-tag secondary">CI/CD</span>
+                                <span class="skill-tag secondary">Jira</span>
+                                <span class="skill-tag secondary">SOLID</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title">Languages</h3>
+                        <div class="languages">
+                            <div class="language-item">
+                                <span class="language-name">Ukrainian</span>
+                                <span class="language-level">Native</span>
+                            </div>
+                            <div class="language-item">
+                                <span class="language-name">Russian</span>
+                                <span class="language-level">Fluent</span>
+                            </div>
+                            <div class="language-item">
+                                <span class="language-name">English</span>
+                                <span class="language-level">Pre-intermediate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content">
+                    <div class="section">
+                        <h3 class="section-title">Professional Experience</h3>
+                        
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div>
+                                    <div class="job-title">Backend Developer</div>
+                                    <div class="company">Logistics Company</div>
+                                </div>
+                                <div class="duration">2+ years</div>
+                            </div>
+                            <ul class="achievements">
+                                <li>Participated in projects involving RESTful APIs using ASP.NET Core Web API for logistics operations</li>
+                                <li>Worked on comprehensive WinForms applications including video surveillance and motion detection tools</li>
+                                <li>Contributed to robust Windows Services for automated background data processing and calculations</li>
+                                <li>Participated in projects optimizing MS SQL Server databases with complex business logic implementation</li>
+                                <li>Worked on a Telegram bot for logistics notifications and administrative tools, improving team communication</li>
+                                <li>Participated in WCF projects for enterprise service integration</li>
+                                <li>Contributed to test automation solutions using Selenium WebDriver</li>
+                                <li>Participated in projects building a cross-platform mobile application using .NET MAUI framework</li>
+                                <li>Worked with a team using Git version control and Jira project management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title">Key Projects</h3>
+                        
+                        <div class="project">
+                            <div class="project-title">🎥 Video Surveillance & Motion Detection</div>
+                            <div class="project-desc">
+                                Worked on an advanced WinForms application for video archive management and motion detection. Contributed to real-time video processing algorithms, a user-friendly interface for archive browsing, and automated motion detection alerts.
+                            </div>
+                        </div>
+                        
+                        <div class="project">
+                            <div class="project-title">🚀 Logistics Telegram Bot</div>
+                            <div class="project-desc">
+                                Participated in a comprehensive Telegram bot project for the logistics team with a notification system and administrative tools. Contributed to automated workflow processes, integration with company systems, and improved team communication efficiency.
+                            </div>
+                        </div>
+                        
+                        <div class="project">
+                            <div class="project-title">⚙️ Automated Calculation Services</div>
+                            <div class="project-desc">
+                                Worked on Windows Services for background data processing and automated calculations. Contributed to high reliability with error handling, logging mechanisms, and processed thousands of transactions daily.
+                            </div>
+                        </div>
+                        
+                        <div class="project">
+                            <div class="project-title">🧪 Test Automation Framework</div>
+                            <div class="project-desc">
+                                Participated in a Selenium WebDriver-based automation testing solution for web applications. Contributed to improved testing efficiency and reduced manual testing time by implementing comprehensive test suites.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title">Education & Certifications</h3>
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div>
+                                    <div class="job-title">Master's Degree in Mechanical Engineering</div>
+                                    <div class="company">National University</div>
+                                </div>
+                                <div class="duration">2008–2012</div>
+                            </div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div>
+                                    <div class="job-title">QA Core Course</div>
+                                    <div class="company">Telesens Academy</div>
+                                </div>
+                                <div class="duration">2015</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title">Professional Summary</h3>
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #3498db;">
+                            <p style="color: #555; line-height: 1.6; margin: 0;">
+                                C# developer with 2+ years of experience in working on robust backend systems, desktop applications, and automation tools. 
+                                Proven expertise in WinForms, ASP.NET Core Web API, WCF, and database operations. Strong understanding of software 
+                                architecture, data processing, and business logic implementation. Successfully participated in projects in the logistics domain 
+                                with a focus on automation and process optimization.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ukrainian Version -->
+        <div id="uk" style="display: none;">
+            <div class="header">
+                <div class="header-content">
+                    <h1 class="name">Віталій Михайличенко</h1>
+                    <p class="title">.NET Backend Розробник / Десктоп Розробник</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                            mvv890517@gmail.com
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                            </svg>
+                            +380686082260
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                            </svg>
+                            Харків, Україна
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            github.com/mvv890517
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="sidebar">
+                    <div class="section">
+                        <h3 class="section-title">Навички</h3>
+                        
+                        <div class="skill-category">
+                            <h4>Основні Технології</h4>
+                            <div class="skills-grid">
+                                <span class="skill-tag">C#</span>
+                                <span class="skill-tag">.NET Core/.NET</span>
+                                <span class="skill-tag">ASP.NET Core</span>
+                                <span class="skill-tag">Web API</span>
+                                <span class="skill-tag">WinForms</span>
+                                <span class="skill-tag">WCF</span>
+                                <span class="skill-tag">MS SQL Server</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">Entity Framework</span>
+                                <span class="skill-tag">LINQ</span>
+                                <span class="skill-tag">.NET MAUI</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Додаткові Технології</h4>
+                            <div class="skills-grid">
+                                <span class="skill-tag secondary">REST API</span>
+                                <span class="skill-tag secondary">JSON</span>
+                                <span class="skill-tag secondary">Git</span>
+                                <span class="skill-tag secondary">Selenium</span>
+                                <span class="skill-tag secondary">Windows Services</span>
+                                <span class="skill-tag secondary">Telegram.Bot</span>
+                                <span class="skill-tag secondary">CI/CD</span>
+                                <span class="skill-tag secondary">Jira</span>
+                                <span class="skill-tag secondary">SOLID</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title">Мови</h3>
+                        <div class="languages">
+                            <div class="language-item">
+                                <span class="language-name">Українська</span>
+                                <span class="language-level">Рідна</span>
+                            </div>
+                            <div class="language-item">
+                                <span class="language-name">Російська</span>
+                                <span class="language-level">Вільно</span>
+                            </div>
+                            <div class="language-item">
+                                <span class="language-name">Англійська</span>
+                                <span class="language-level">Нижче середнього</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content">
+                    <div class="section">
+                        <h3 class="section-title">Професійний Досвід</h3>
+                        
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div>
+                                    <div class="job-title">Backend Розробник</div>
+                                    <div class="company">Логістична Компанія</div>
+                                </div>
+                                <div class="duration">2+ роки</div>
+                            </div>
+                            <ul class="achievements">
+                                <li>Брав участь у проектах із RESTful API за допомогою ASP.NET Core Web API для логістичних операцій</li>
+                                <li>Працював над комплексними WinForms додатками, включаючи відеоспостереження та інструменти виявлення руху</li>
+                                <li>Співпрацював над Windows Services для автоматизованого оброблення даних та обчислень</li>
+                                <li>Брав участь у проектах оптимізації баз даних MS SQL Server із складною бізнес-логікою</li>
+                                <li>Працював над Telegram ботом для логістичних сповіщень та адміністративних інструментів, покращуючи комунікацію команди</li>
+                                <li>Брав участь у проектах із WCF для інтеграції корпоративних сервісів</li>
+                                <li>Співпрацював над рішеннями для автоматизації тестування за допомогою Selenium WebDriver</li>
+                                <li>Брав участь у проектах із розробки кросплатформного мобільного додатку за допомогою .NET MAUI</li>
+                                <li>Працював у команді з використанням Git та Jira для управління проєктами</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title">Ключові Проєкти</h3>
+                        
+                        <div class="project">
+                            <div class="project-title">🎥 Відеоспостереження та Виявлення Руху</div>
+                            <div class="project-desc">
+                                Працював над розширеним WinForms додатком для управління відеохронікою та виявлення руху. Співпрацював над алгоритмами обробки відео в реальному часі, зручним інтерфейсом для перегляду архіву та автоматичними сповіщеннями про виявлення руху.
+                            </div>
+                        </div>
+                        
+                        <div class="project">
+                            <div class="project-title">🚀 Логістичний Telegram Бот</div>
+                            <div class="project-desc">
+                                Брав участь у проєкті комплексного Telegram бота для логістичної команди з системою сповіщень та адміністративними інструментами. Співпрацював над автоматизацією робочих процесів, інтеграцією з корпоративними системами та підвищенням ефективності комунікації команди.
+                            </div>
+                        </div>
+                        
+                        <div class="project">
+                            <div class="project-title">⚙️ Автоматизовані Сервіси Обчислень</div>
+                            <div class="project-desc">
+                                Працював над Windows Services для оброблення даних у фоновому режимі та автоматизованих обчислень. Співпрацював над високою надійністю з механізмами обробки помилок, веденням журналів та обробкою тисяч транзакцій щодня.
+                            </div>
+                        </div>
+                        
+                        <div class="project">
+                            <div class="project-title">🧪 Фреймворк Автоматизації Тестування</div>
+                            <div class="project-desc">
+                                Брав участь у проєкті рішення для автоматизації тестування на основі Selenium WebDriver для веб-додатків. Співпрацював над підвищенням ефективності тестування та скороченням часу ручного тестування завдяки впровадженню комплексних тестів.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title">Освіта та Сертифікати</h3>
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div>
+                                    <div class="job-title">Магістр Механічної Інженерії</div>
+                                    <div class="company">Національний Університет</div>
+                                </div>
+                                <div class="duration">2008–2012</div>
+                            </div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div>
+                                    <div class="job-title">Курс QA Core</div>
+                                    <div class="company">Telesens Academy</div>
+                                </div>
+                                <div class="duration">2015</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title">Професійний Огляд</h3>
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #3498db;">
+                            <p style="color: #555; line-height: 1.6; margin: 0;">
+                                Розробник C# із 2+ роками досвіду роботи над надійними бекенд-системами, десктопними додатками та інструментами автоматизації. 
+                                Доведена експертиза у WinForms, ASP.NET Core Web API, WCF та операціях із базами даних. Глибоке розуміння архітектури програмного забезпечення, 
+                                обробки даних та реалізації бізнес-логіки. Успішно брав участь у проєктах у сфері логістики з акцентом на автоматизацію та оптимізацію процесів.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="download-section">
+        <button class="download-btn" onclick="downloadPDF()">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+            Download PDF
+        </button>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            document.querySelector('.download-section').style.display = 'none';
+            window.print();
+            setTimeout(() => {
+                document.querySelector('.download-section').style.display = 'block';
+            }, 1000);
+        }
+        
+        function switchLanguage(lang) {
+            const enContent = document.getElementById('en');
+            const ukContent = document.getElementById('uk');
+            
+            if (lang === 'en') {
+                enContent.style.display = 'block';
+                ukContent.style.display = 'none';
+            } else if (lang === 'uk') {
+                enContent.style.display = 'none';
+                ukContent.style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.experience-item, .project, .skill-tag');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
